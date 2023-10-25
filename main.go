@@ -47,7 +47,7 @@ type VnicMetadata struct {
 	IPv6VirtualRouterIp  string
 }
 
-func (m *VnicMetadata) ID() string {
+func (m *VnicMetadata) RandomID() string {
 	return uuid.NewString()
 }
 

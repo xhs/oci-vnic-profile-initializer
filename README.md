@@ -37,7 +37,7 @@ IPV6_PEERROUTES="yes"
 IPV6_FAILURE_FATAL="no"
 IPV6_ADDR_GEN_MODE="stable-privacy"
 NAME="{{.Name}}"
-UUID="{{.ID}}"
+UUID="{{.RandomID}}"
 DEVICE="{{.Name}}"
 ONBOOT="yes"
 ```
@@ -54,6 +54,10 @@ type VnicMetadata struct {
 	IPv6Addresses        []string
 	IPv6SubnetMaskLength string
 	IPv6VirtualRouterIp  string
+}
+
+func (m *VnicMetadata) RandomID() string {
+	return uuid.NewString()
 }
 ```
 
