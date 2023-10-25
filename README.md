@@ -21,7 +21,26 @@ As defined in `/etc/udev/rules.d/90-oci-vnic-config.rules`, script `vnic-initial
 /usr/bin/nohup /usr/local/bin/oci-vnic-profile-initializer $1 >> /tmp/oci-vnic.log
 ```
 
-Program `oci-vnic-profile-initializer` will then generate profiles, if not exist, according to template `/etc/oci-vnic/profile.tpl`.
+Program `oci-vnic-profile-initializer` will then generate a new profile, if not exist, according to template `/etc/oci-vnic/profile.tpl`.
+
+```go
+BOOTPROTO="dhcp"
+DEFROUTE="yes"
+PEERDNS="yes"
+PEERROUTES="yes"
+IPV4_FAILURE_FATAL="no"
+IPV6INIT="yes"
+IPV6_AUTOCONF="yes"
+IPV6_DEFROUTE="yes"
+IPV6_PEERDNS="yes"
+IPV6_PEERROUTES="yes"
+IPV6_FAILURE_FATAL="no"
+IPV6_ADDR_GEN_MODE="stable-privacy"
+NAME="{{.Name}}"
+UUID="{{.ID}}"
+DEVICE="{{.Name}}"
+ONBOOT="yes"
+```
 
 ```go
 // Available variables in template
