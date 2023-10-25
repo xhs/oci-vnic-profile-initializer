@@ -1,0 +1,3 @@
+SUBSYSTEM=="net", ACTION=="add", NAME!="", RUN+="/usr/local/bin/vnic-initializer.sh %k"
+# if net.ifnames=0
+SUBSYSTEM=="net", ACTION=="add", NAME=="", RUN+="/usr/local/bin/vnic-initializer.sh eth%n"
