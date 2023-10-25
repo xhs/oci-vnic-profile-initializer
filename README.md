@@ -21,7 +21,7 @@ As defined in `/etc/udev/rules.d/90-oci-vnic-config.rules`, script `vnic-initial
 /usr/bin/nohup /usr/local/bin/oci-vnic-profile-initializer $1 >> /tmp/oci-vnic.log
 ```
 
-Program `oci-vnic-profile-initializer` will then generate a new profile, if not exist, according to template `/etc/oci-vnic/profile.tpl`.
+Program `oci-vnic-profile-initializer` will then generate a new profile, if not already exists, according to template `/etc/oci-vnic/profile.tpl`.
 
 ```go
 BOOTPROTO="dhcp"
@@ -41,6 +41,8 @@ UUID="{{.RandomID}}"
 DEVICE="{{.Name}}"
 ONBOOT="yes"
 ```
+
+Modify this template as needed.
 
 ```go
 // Available variables in template
